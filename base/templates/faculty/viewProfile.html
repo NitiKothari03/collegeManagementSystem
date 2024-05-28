@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>COLLEGION | Faculty</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/flag-icon.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/feather.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon"
+          href="../../static/adminResources/image/favicon.ico"/>
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    {% include 'faculty/header.html' %}
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+
+        {% include 'faculty/menu.html' %}
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row grid-margin">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header"
+                                 style="background: linear-gradient(90deg, #464de4, transparent);">
+                                <h4 class="m-0 text-white">View Profile</h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="cmxform" id="commentForm"
+                                      method="post"
+                                      action="#">
+                                    <fieldset>
+
+                                        <div class="form-group col-12">
+                                            <center>
+                                                <img id="facultyImg" src="{{
+                                                        faculty_vo_list[0][0]['faculty_image_path'] }}{{ faculty_vo_list[0][0]['faculty_image_name'] }}"
+                                                         style="width:200px;
+                                                         height:200px">
+                                            <br><br>
+                                            {% if
+                                            faculty_vo_list[0][0]['faculty_hod'] == 1%}
+                                                <div class="form-control
+                                                col-1">
+                                                    <input type="text" id="facultyDegreeId"
+                                                           name="facultyHod"
+                                                           class="form-control"
+                                                           value="HOD"
+                                                           size="5"
+                                                           disabled
+                                                           style="background-color: darkblue; color: white; font-family: 'Verdana'; font-size: 13px">
+                                                </div>
+                                            {% endif %}
+                                            </center>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="facultyDegreeId">
+                                                    Degree Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="facultyDegreeId"
+                                                       id="facultyDegreeId" style="background-color: transparent"
+                                                       value="{{ faculty_vo_list[0][1]['degree_name'] }}"
+                                                       disabled
+                                                >
+                                            </div>
+
+
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="facultyDepartmentId">
+                                                    Department Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="facultyDepartmentId"
+                                                       name="facultyDepartmentId" style="background-color: transparent"
+                                                       value="{{ faculty_vo_list[0][2]['department_name'] }}"
+                                                       disabled>
+                                            </div>
+
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="facultySubjectId">
+                                                    Subject Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="facultySubjectId"
+                                                       name="facultySubjectId" style="background-color: transparent"
+                                                       value="{{
+                                                               faculty_vo_list[0][3]['subject_name'] }}"
+                                                       disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label
+                                                    for="facultyUsername">
+                                                Email</label>
+                                            <input id="facultyUsername"
+                                                   class="form-control"
+                                                   name="facultyUsername"
+                                                   minlength="2"
+                                                   type="text" style="background-color: transparent"
+                                                   value="{{
+                                                           faculty_vo_list[0][4]['login_username'] }}"
+                                                   disabled>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="facultyFirstName">
+                                                    First Name</label>
+                                                <input id="facultyFirstName"
+                                                       class="form-control"
+                                                       name="facultyFirstName"
+                                                       minlength="2"
+                                                       type="text"
+                                                       style="background-color: transparent"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_firstname'] }}" disabled>
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label for="facultyLastName">
+                                                    Last Name</label>
+                                                <input id="facultyLastName"
+                                                       class="form-control"
+                                                       name="facultyLastName"
+                                                       minlength="2"
+                                                       type="text" style="background-color: transparent"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_lastname'] }}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label"
+                                                       for="facultyGender">
+                                                    Gender</label>
+                                                <input id="facultyGender"
+                                                           class="form-control"
+                                                           name="facultyGender"
+                                                           minlength="2"
+                                                           type="text" style="background-color: transparent"
+                                                           value="{{
+                                                                   faculty_vo_list[0][0]['faculty_gender'] }}" disabled>
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="facultyContact">
+                                                    Contact Number</label>
+                                                <input id="facultyContact"
+                                                       class="form-control"
+                                                       name="facultyContact"
+                                                       minlength="2"
+                                                       type="text" style="background-color: transparent"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_contact'] }}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label for="facultyQualification">
+                                                    qualification</label>
+                                                <input id="facultyQualification"
+                                                       class="form-control"
+                                                       name="facultyQualification"
+                                                       minlength="2"
+                                                       type="text" style="background-color: transparent"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_qualification'] }}" disabled>
+                                            </div>
+
+
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="facultyTeachingExperience">
+                                                    Teaching Experience</label>
+                                                <input
+                                                        id="facultyTeachingExperience"
+                                                        class="form-control"
+                                                        name="facultyTeachingExperience"
+                                                        minlength="2"
+                                                        type="text" style="background-color: transparent"
+                                                        value="{{
+                                                                faculty_vo_list[0][0]['faculty_teaching_experience'] }}" disabled>
+                                            </div>
+                                        </div>
+
+
+                                        <a class="btn btn-primary"
+                                               href="/faculty/edit_profile">
+                                            Edit Profile</a>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            {% include 'faculty/footer.html' %}
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<script src="../../static/adminResources/js/jquery.validate.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap-maxlength.min.js"></script>
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+<script src="../../static/adminResources/js/file-upload.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

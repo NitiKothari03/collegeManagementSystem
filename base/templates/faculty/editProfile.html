@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>COLLEGION | Faculty</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/flag-icon.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/feather.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon"
+          href="../../static/adminResources/image/favicon.ico"/>
+    <script type="text/javascript">
+        function editFacultySubject() {
+            let facultyDepartmentId = document.getElementById('facultyDepartmentId');
+            let facultySubjectId = document.getElementById
+            ('facultySubjectId');
+
+            facultySubjectId.innerHTML = "";
+
+            let option = document.createElement("option");
+            option.value = "";
+            option.text = "Select Subject";
+            facultySubjectId.options.add(option);
+            facultySubjectId[0].disabled = true;
+            facultySubjectId[0].selected = true;
+
+            let ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4) {
+                    let json = JSON.parse(ajax.responseText);
+                    for (let i = 0; i < json.length; i++) {
+                        let option = document.createElement("option");
+                        option.value = json[i].subject_id;
+                        option.text = json[i].subject_name;
+                        facultySubjectId.options.add(option);
+                    }
+                }
+            };
+            ajax.open("get",
+                "/admin/ajax_subject_faculty?facultyDepartmentId=" +
+                facultyDepartmentId.value, true);
+            ajax.send();
+        }
+    </script>
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    {% include 'faculty/header.html' %}
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+
+        {% include 'faculty/menu.html' %}
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row grid-margin">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header"
+                                 style="background: linear-gradient(90deg, #464de4, transparent);">
+                                <h4 class="m-0 text-white">Update Profile</h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="cmxform" id="commentForm"
+                                      method="post"
+                                      action="/faculty/update_profile">
+                                    <fieldset>
+                                        <input type="hidden"
+                                               name="facultyId"
+                                               value="{{
+                                                       faculty_vo_list[0][0]['faculty_id'] }}">
+
+                                        <div class="form-group">
+                                            <label
+                                                    for="facultyUsername">
+                                                Email</label>
+                                            <input id="facultyUsername"
+                                                   class="form-control"
+                                                   name="facultyUsername"
+                                                   minlength="2"
+                                                   type="text"
+                                                   value="{{
+                                                           faculty_vo_list[0][4]['login_username'] }}"
+                                                   disabled required>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="facultyFirstName">
+                                                    First Name</label>
+                                                <input id="facultyFirstName"
+                                                       class="form-control"
+                                                       name="facultyFirstName"
+                                                       minlength="2"
+                                                       type="text"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_firstname'] }}" required>
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label for="facultyLastName">
+                                                    Last Name</label>
+                                                <input id="facultyLastName"
+                                                       class="form-control"
+                                                       name="facultyLastName"
+                                                       minlength="2"
+                                                       type="text"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_lastname'] }}" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="facultyDegreeId">
+                                                    Degree Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="facultyDegreeId"
+                                                       id="facultyDegreeId"
+                                                       value="{{ faculty_vo_list[0][1]['degree_name'] }}"
+                                                       disabled required
+                                                >
+                                            </div>
+
+
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="facultyDepartmentId">
+                                                    Department Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="facultyDepartmentId"
+                                                       id="facultyDepartmentId"
+                                                       value="{{
+                                                               faculty_vo_list[0][2]['department_name'] }}"
+                                                       disabled required
+                                                >
+                                            </div>
+
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="facultySubjectId">
+                                                    Subject Name</label>
+                                                <select class="form-control"
+                                                        name="facultySubjectId"
+                                                        id="facultySubjectId" required>
+                                                    <option value="" selected
+                                                            disabled>Select
+                                                        Subject
+                                                    </option>
+                                                    {% for row in
+                                                    subject_dao_list %}
+                                                        <option
+                                                                value="{{ row['subject_id'] }}">{{ row['subject_name'] }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label"
+                                                       for="facultyGender">
+                                                    Gender</label>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-radio">
+                                                            <div class="icheck">
+                                                                <input tabindex="7"
+                                                                       type="radio"
+                                                                       id="Male"
+                                                                       name="facultyGender"
+                                                                       value="Male" required>
+                                                                <label for="Male">Male</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-radio">
+                                                            <div class="icheck">
+                                                                <input tabindex="7"
+                                                                       type="radio"
+                                                                       id="Female"
+                                                                       name="facultyGender"
+                                                                       value="Female">
+                                                                <label for="Female">Female</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label"
+                                                       for="facultyHod">Faculty is
+                                                    HOD?</label>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-radio">
+                                                            <div class="icheck">
+                                                                <input tabindex="7"
+                                                                       type="radio"
+                                                                       id="Yes"
+                                                                       name="facultyHod"
+                                                                       value="Yes" required>
+                                                                <label for="Yes">Yes</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-radio">
+                                                            <div class="icheck">
+                                                                <input tabindex="7"
+                                                                       type="radio"
+                                                                       id="No"
+                                                                       name="facultyHod"
+                                                                       value="No">
+                                                                <label for="No">No</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label for="facultyQualification">
+                                                    qualification</label>
+                                                <input id="facultyQualification"
+                                                       class="form-control"
+                                                       name="facultyQualification"
+                                                       minlength="2"
+                                                       type="text"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_qualification'] }}" required>
+                                            </div>
+
+
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="facultyTeachingExperience">
+                                                    Teaching Experience</label>
+                                                <input
+                                                        id="facultyTeachingExperience"
+                                                        class="form-control"
+                                                        name="facultyTeachingExperience"
+                                                        minlength="2"
+                                                        type="text"
+                                                        value="{{
+                                                                faculty_vo_list[0][0]['faculty_teaching_experience'] }}" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-12">
+                                                <label
+                                                        for="facultyContact">
+                                                    Contact Number</label>
+                                                <input id="facultyContact"
+                                                       class="form-control"
+                                                       name="facultyContact"
+                                                       minlength="2"
+                                                       type="text"
+                                                       value="{{
+                                                               faculty_vo_list[0][0]['faculty_contact'] }}" required>
+                                            </div>
+                                        </div>
+
+                                        <input class="btn btn-primary"
+                                               type="submit" value="Update">
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            {% include 'faculty/footer.html' %}
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<script src="../../static/adminResources/js/jquery.validate.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap-maxlength.min.js"></script>
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+<script src="../../static/adminResources/js/file-upload.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

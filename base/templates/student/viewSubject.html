@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>COLLEGION | Student</title>
+    <link rel="icon" href="../../static/studentResources/image/favicon.ico"
+          type="image/x-icon"/>
+
+
+    <!--[if lt IE 9]>
+   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+   <![endif]-->
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="content-type" content="text/HTML" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description"
+          content=" Study point is a theme which is well organised and easy to understand. The templates layout are easy to modify or customize for your web pages.  Templates are used various purpose such as website, business, corporate, portfolio, etc. Browse for unique HTML/CSS  Themes. Powerful site template design in a clean and minimalistic style. study point theme templates by Crescent Theme exclusive on themeforest.">
+    <meta property="og:description"
+          content="Best education html Theme for educational, training center, education center, university, college, kindergarten, courses hub and academy."/>
+    <meta name="keywords"
+          content="education theme, education, best education, html, html templates, css templates, css, website templates, blogger template, studypoint, study-point, study, study point, school, teaching, Responsive, Landing, Bootstrap, Bootstrap 4,Template, school layout, school template ">
+    <meta property="og:title"
+          content="Study Point - Creative Multi-Purpose Education Theme"/>
+    <meta name="author" content="Crescent-Theme">
+    <meta name="copyright" content="copyright 2019 Crescent Theme">
+
+    <link href="../../static/studentResources/css/bootstrap.min.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/font-awesome.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/custom-font.css"
+          rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+
+    <link href="../../static/studentResources/css/owl.carousel.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/owl.theme.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/navigation.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/preloader.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/style.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/responsive.css"
+          rel="stylesheet"/>
+
+    {#    <script type="text/javascript">#}
+    {#        function loadSubject() {#}
+    {#            let subjectSemesterId = document.getElementById#}
+    {#            ('subjectSemesterId');#}
+    {#            let studentSubjectId = document.getElementById#}
+    {#            ('studentSubjectId');#}
+    {#            let studentSubjectId1 = document.getElementById#}
+    {#            ('studentSubjectId1');#}
+    {#            let studentSubjectId2 = document.getElementById#}
+    {#            ('studentSubjectId2');#}
+    {##}
+    {#            studentSubjectId.innerHTML = "";#}
+    {#            studentSubjectId1.innerHTML = "";#}
+    {#            studentSubjectId2.innerHTML = "";#}
+    {##}
+    {#            let ajax = new XMLHttpRequest();#}
+    {#            ajax.onreadystatechange = function () {#}
+    {#                    if (ajax.readyState === 4) {#}
+    {#                        let json = JSON.parse(ajax.responseText);#}
+    {#                        console.log(">>>>>>>>>>>>", json.length);#}
+    {#                        for (let i = 0; i < json.length; i++) {#}
+    {#                            console.log(i);#}
+    {#                            let header = document.createElement("h4");#}
+    {#                            console.log(header.text);#}
+    {#                            textnode = document.createTextNode(json[i].subject_name);#}
+    {#                            studentSubjectId.appendChild(textnode);#}
+    {#                            console.log(studentSubjectId);#}
+    {##}
+    {#                            let p = document.createElement("p");#}
+    {#                            console.log(p.text);#}
+    {#                            textnode = document.createTextNode(json[i].subject_textbook);#}
+    {#                            studentSubjectId1.appendChild(textnode);#}
+    {#                            console.log(studentSubjectId1);#}
+    {##}
+    {#                            let p2 = document.createElement("p");#}
+    {#                            console.log(p2.text);#}
+    {#                            textnode = document.createTextNode(json[i].subject_code);#}
+    {#                            studentSubjectId2.appendChild(textnode);#}
+    {#                            console.log(studentSubjectId2);#}
+    {#                        }#}
+    {#                    }#}
+    {#                };#}
+    {#            ajax.open("get",#}
+    {#                "/student/ajax_semester_subject?subjectSemesterId=" +#}
+    {#                subjectSemesterId.value, true);#}
+    {#            ajax.send();#}
+    {#        }#}
+    {#    </script>#}
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50" class="home">
+
+
+{% include 'student/header.html' %}
+
+<div class="event_bg">
+    <div class="header_title">
+        <h1>Subjects</h1>
+        <hr class="tital_border">
+    </div>
+</div>
+
+<div class="breadcrumb_bg">
+    <div class="container">
+        <ul class="breadcrumb breadcrumb-arrow">
+            <li><a href="/student/load_dashboard">Home</a></li>
+            <li class="active"><span>Subjects</span></li>
+        </ul>
+    </div>
+</div>
+
+<section>
+    <div class="container" id="wrapper">
+
+        <div class="contact_form1 w-100 ml-auto mr-auto m-t-30">
+        <div class="row">
+            <form>
+            <div class="row">
+                {% for row in subject_vo_list %}
+                        <div class="col-md-4 col-sm-6">
+                        <div class="event_title">
+                                <h4>{{ row['subject_name'] }} </h4>
+                            <p>
+                                Subject Textbook : {{
+                                    row['subject_textbook']
+                                    }}<br>
+                            </p>
+                            <div class="event_price">
+                                <p>
+                                    <i aria-hidden="true"
+                                       class="fa fa-calendar"></i> Subject
+                                    Code : {{
+                                        row['subject_code'] }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+
+{#                <script type="text/javascript">#}
+{#                    function loadSubject() {#}
+{##}
+{#                        let subjectSemesterId = document.getElementById#}
+{#                        ('subjectSemesterId');#}
+{##}
+{##}
+{#                        let ajax = new XMLHttpRequest();#}
+{#                        ajax.onreadystatechange = function () {#}
+{#                            if (ajax.readyState === 4) {#}
+{#                                let json = JSON.parse(ajax.responseText);#}
+{##}
+{#                                for (let i = 0; i < json.length; i++) {#}
+{##}
+{#                                    console.log(">>>>>>>>>",i);#}
+{#                                    let codeBlock = '<div class="row mt-5">' +#}
+{#                                        '<div class="col-sm-6 col-md-4">' +#}
+{#                                        '<div class="event_title">' +#}
+{#                                        '<h4 id="studentSubjectId"></h4>' +#}
+{#                                        '<p id="studentSubjectId1"></p>' +#}
+{#                                        '<div class="event_price">' +#}
+{#                                        '<p id="studentSubjectId2">' +#}
+{#                                        'Subject Code:</p>' +#}
+{#                                        '</div>' +#}
+{#                                        '</div>' +#}
+{#                                        '</div>' +#}
+{#                                        '</div>';#}
+{##}
+{#                                    document.getElementById("wrapper").innerHTML = codeBlock;#}
+{##}
+{#                                    let studentSubjectId = document.getElementById#}
+{#                                    ('studentSubjectId');#}
+{#                                    let studentSubjectId1 = document.getElementById#}
+{#                                    ('studentSubjectId1');#}
+{#                                    let studentSubjectId2 = document.getElementById#}
+{#                                    ('studentSubjectId2');#}
+{##}
+{#                                    studentSubjectId.innerHTML = "";#}
+{#                                    studentSubjectId1.innerHTML = "";#}
+{#                                    studentSubjectId2.innerHTML = "";#}
+{##}
+{#                                    let header = document.createElement("h4");#}
+{#                                    textnode = document.createTextNode(json[i].subject_name);#}
+{#                                    studentSubjectId.appendChild(textnode);#}
+{##}
+{#                                    let p = document.createElement("p");#}
+{#                                    textnode = document.createTextNode(json[i].subject_textbook);#}
+{#                                    studentSubjectId1.appendChild(textnode);#}
+{##}
+{#                                    let p2 = document.createElement("p");#}
+{#                                    textnode = document.createTextNode(json[i].subject_code);#}
+{#                                    studentSubjectId2.appendChild(textnode);#}
+{#                                }#}
+{#                            }#}
+{#                        };#}
+{##}
+{#                        ajax.open("get", "/student/ajax_semester_subject?subjectSemesterId=" + subjectSemesterId.value, true);#}
+{#                        ajax.send();#}
+{#                    }#}
+{#                </script>#}
+
+
+{#                <div class="row">#}
+{#                    <div class="col-sm-10">#}
+{#                        <select class="form-control"#}
+{#                                name="subjectSemesterId"#}
+{#                                id="subjectSemesterId">#}
+{#                            <option selected disabled>Select Your Semester#}
+{#                            </option>#}
+{#                            {% for row in semester_dao_list %}#}
+{#                                <option#}
+{#                                        value="{{ row['semester_id'] }}">{{ row['semester_number'] }}#}
+{#                                </option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </div>#}
+
+{#                    <div class="col-sm-2 col-sm-offset-1">#}
+{#                        <input type="button"#}
+{#                               class="btn btn-default profile_btn"#}
+{#                               onclick="loadSubject()" value="Find">#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+            </form>
+        </div>
+        </div>
+        </div>
+
+        {#        <div class="row mt-5">#}
+        {#            <div class="col-sm-6 col-md-4">#}
+        {#                <div class="event_title">#}
+        {#                    <h4 id="studentSubjectId"></h4>#}
+        {#                    <p id="studentSubjectId1"></p>#}
+        {#                    <div class="event_price">#}
+        {#                        <p id="studentSubjectId2">#}
+        {#                            Subject Code :#}
+        {#                        </p>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+
+</section>
+
+{% include 'student/footer.html' %}
+
+<div class="login_signup_option">
+    <div class="l-modal is-hidden--off-flow js-modal-shopify">
+        <div class="l-modal__shadow js-modal-hide"></div>
+        <div class="login_popup login_modal_body">
+            <div class="Popup_title d-flex justify-content-between">
+                <h2 class="hidden">&nbsp;</h2>
+
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-md-12 col-lg-12 login_option_btn">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item"><a class="nav-link active"
+                                                    data-toggle="tab"
+                                                    href="#login" role="tab">Login</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    data-toggle="tab"
+                                                    href="#panel2" role="tab">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+
+                        <div class="tab-content card">
+
+                            <div class="tab-pane fade in show active"
+                                 id="login" role="tabpanel">
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Email</label>
+                                                <input type="email"
+                                                       class="form-control"
+                                                       placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Password</label>
+                                                <input type="password"
+                                                       class="form-control"
+                                                       placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
+                                            <a href="javascript:void(0)"
+                                               title="" class="forget_pass">Forget
+                                                Password ?</a>
+                                            <button type="submit"
+                                                    class="btn btn-default login_btn">
+                                                Login
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="social_login">
+                                                <div class="social_items">
+                                                    <button class="google_login google">
+                                                        Login Google
+                                                    </button>
+                                                    <button class="google_login facebook">
+                                                        Login Facebook
+                                                    </button>
+                                                    <button class="google_login twitter">
+                                                        Login Twitter
+                                                    </button>
+                                                    <button class="google_login linkdin">
+                                                        Login Linkdin
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="panel2"
+                                 role="tabpanel">
+                                <form action="#" class="register">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Email</label>
+                                                <input type="email"
+                                                       class="form-control"
+                                                       placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Password</label>
+                                                <input type="password"
+                                                       class="form-control"
+                                                       placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
+                                            <button type="submit"
+                                                    class="btn btn-default login_btn">
+                                                Register
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a class="btn btn-lg  scrollup"><i class="fa fa-arrow-up"></i></a>
+
+<script src="../../static/studentResources/js/jquery.min.js"></script>
+
+<script src="../../static/studentResources/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"
+        src="../../static/studentResources/js/jquery.countdown.min.js"></script>
+
+<script src="../../static/studentResources/js/owl.carousel.min.js"></script>
+
+<script src="../../static/studentResources/js/jquery.magnific-popup.min.js"></script>
+
+<script src="../../static/studentResources/js/mobilemenu.js"></script>
+<script src="../../static/studentResources/js/custom.js"></script>
+</body>
+</html>

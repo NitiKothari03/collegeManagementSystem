@@ -1,0 +1,13 @@
+print hello with the help of class;
+#include<iostream.h>
+#include<conio.h>
+class hello
+{
+	public:
+	      cout<<"Hello World!!";
+};
+void main()
+{
+	clrscr();
+	getch();	
+}

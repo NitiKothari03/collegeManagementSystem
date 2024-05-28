@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>College Management System</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/flag-icon.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/feather.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon"
+          href="../../static/adminResources/image/favicon.ico"/>
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+            <div class="row w-100">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left p-5">
+                        {#              <div class="brand-logo">#}
+                        {#                <img src="../../static/adminResources/image/logo-inverse.svg" alt="logo">#}
+                        {#              </div>#}
+                        <center><h4>SIGN IN</h4></center>
+                        <form action="/admin/validate_login" class="pt-3"
+                              method="post">
+                            <div class="form-group">
+                                <input type="email"
+                                       class="form-control form-control-lg"
+                                       id="loginUsername" name="loginUsername"
+                                       placeholder="Enter Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control
+                  form-control-lg" id="loginPassword"
+                                       placeholder="Enter Your Password"
+                                       name="loginPassword" required>
+                                <div class="my-2 d-flex justify-content-between align-items-center">
+                                    {#                  <div class="form-check">#}
+                                    {#                    <label class="form-check-label text-muted">#}
+                                    {#                      <input type="checkbox" class="form-check-input">#}
+                                    {#                      Keep me signed in#}
+                                    {#                    </label>#}
+                                    {#                  </div>#}
+{#                                    <a href="#" class="auth-link text-black">Forgot#}
+{#                                        password?</a>#}
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-block btn-primary btn-lg
+                  font-weight-medium auth-form-btn">SIGN
+                                    IN
+                                </button>
+                            </div>
+
+                            {#                <div class="mb-2">#}
+                            {#                  <button type="button" class="btn btn-block btn-facebook auth-form-btn">#}
+                            {#                    <i class="mdi mdi-facebook mr-2"></i>Connect using facebook#}
+                            {#                  </button>#}
+                            {#                </div>#}
+                            {% with message = get_flashed_messages() %}
+
+                                {% if message %}
+                                    <br><br>
+                                    <div style="border:none;color: red;
+                                    font-size: 20px; margin-left:90px;">{{
+                                            message[0] }}</div>
+
+                                {% endif %}
+
+                            {% endwith %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+</body>
+
+</html>

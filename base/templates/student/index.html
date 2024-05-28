@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>COLLEGION | Student</title>
+    <link rel="icon" href="../../static/adminResources/image/favicon.ico"
+          type="image/x-icon"/>
+
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="content-type" content="text/HTML" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description"
+          content=" Study point is a theme which is well organised and easy to understand. The templates layout are easy to modify or customize for your web pages. Templates are used various purpose such as website, business, corporate, portfolio, etc. Browse for unique HTML/CSS  Themes. Powerful site template design in a clean and minimalistic style. study point theme templates by Crescent Theme exclusive on themeforest.">
+    <meta property="og:description"
+          content="Best education html Theme for educational, training center, education center, university, college, kindergarten, courses hub and academy."/>
+    <meta name="keywords"
+          content="education theme, education, best education, html, html templates, css templates, css, website templates, blogger template, studypoint, study-point, study, study point, school, teaching, Responsive, Landing, Bootstrap, Bootstrap 4,Template, school layout, school template ">
+    <meta property="og:title"
+          content="Study Point - Creative Multi-Purpose Education Theme"/>
+    <meta name="author" content="Crescent-Theme">
+    <meta name="copyright" content="copyright 2019 Crescent Theme">
+
+    <link href="../../static/studentResources/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/custom-font.css" rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+
+    <link href="../../static/studentResources/css/owl.carousel.css" rel="stylesheet"/>
+    <link href="../../static/studentResources/css/owl.theme.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/navigation.css" rel="stylesheet"/>
+    <link href="../../static/studentResources/css/preloader.css" rel="stylesheet"/>
+    <link href="../../static/studentResources/css/style.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/responsive.css" rel="stylesheet"/>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50" class="home">
+
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+
+{% include 'student/header.html' %}
+
+
+<section class="banner text-center p-0">
+    <div class="container-fulid">
+        <div id="banner-slider" class="owl-carousel owl-theme">
+            <div class="banner-slide d-flex align-items-center"
+                 style="background-image: url(../../static/studentResources/image/banner-1.png)">
+                <div class="banner-text w-100">
+                    <h1>Wel Come To Collegion</h1>
+                    <p class="info-text-slider text-white my-4">Collegion
+                        is a college management system.<br/>
+                    This system is made for students and colleges to manage
+                        their data efficiently.
+                    </p>
+                </div>
+            </div>
+            <div class="banner-slide d-flex align-items-center"
+                 style="background-image: url(../../static/studentResources/image/banner-2.png)">
+                <div class="banner-text w-100">
+                    <h1>See Exams</h1>
+                    <p class="info-text-slider text-white my-4">Tests make
+                        you efficient and
+                        <br/>
+                        practice makes you Perfect!</p>
+                    <a href="/student/view_exam"
+                       class="btn btn-default custom_btn">See Exams</a>
+                </div>
+            </div>
+            <div class="banner-slide d-flex align-items-center"
+                 style="background-image: url(../../static/studentResources/image/banner-3.png)">
+                <div class="banner-text w-100">
+                    <h1>See Lectures</h1>
+                    <p class="info-text-slider text-white my-4">Lectures
+                        conducted by the faculty members<br/>
+                        with excellent guidence!</p>
+                    <a href="/student/view_lecture"
+                       class="btn btn-default custom_btn">See Lectures</a>
+                </div>
+            </div>
+            <div class="banner-slide d-flex align-items-center"
+                 style="background-image: url(../../static/studentResources/image/banner-4.png)">
+                <div class="banner-text w-100">
+                    <h1>See Faculties</h1>
+                    <p class="info-text-slider text-white my-4">See
+                        faculty members who is going to teach you. <br/>
+                        Tap and see their detailed profile</p>
+                    <a href="/student/load_faculty"
+                       class="btn btn-default custom_btn">See Faculty</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="page_tital text-center">
+                    <h2> Welcome to Collegion </h2>
+                    <hr class="tital_border">
+                    <p>Here you can see and explore different modules made
+                        for you.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 text-center">
+            <div class="col-md-4">
+                <div class="study_block">
+                    <div class="icon_block">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <div class="study_info">
+                        <h3>Lectures</h3>
+                        <p>All the timing and faculty allocated for your
+                            lecture is listed here...</p>
+                        <a href="/student/view_lecture"
+                           class="btn btn-default profile_btn read_more">Read
+                            More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="study_block">
+                    <div class="icon_block">
+                        <i class="fa fa-pie-chart"></i>
+                    </div>
+                    <div class="study_info">
+                        <h3>Exams</h3>
+                        <p>All the information related to your upcoming
+                            exams are listed here...</p>
+                        <a href="/student/view_exam"
+                           class="btn btn-default profile_btn read_more">Read
+                            More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="study_block">
+                    <div class="icon_block">
+                        <i class="fa fa-trophy"></i>
+                    </div>
+                    <div class="study_info">
+                        <h3>Assignments</h3>
+                        <p>Assignments can be answered by your
+                            side so that faculty can
+                            give marks...</p>
+                        <a href="student/view_assignment"
+                           class="btn btn-default profile_btn read_more">Read
+                            More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page_tital text-center">
+                    <h2> Our Faculty</h2>
+                    <hr class="tital_border">
+                    <p>Our faculty members are highly qualified and
+                        expirienced.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row p-t-50">
+            {% for row in faculty_vo_list %}
+                <div class="col-sm-6">
+                    <div class="row m-b-30">
+                        <div class="col-4 col-sm-4">
+                            <div class="teachers_pro custom_hover_img">
+                                <img src="{{ row['faculty_image_path']
+                                             }}{{
+                                             row['faculty_image_name'] }}"
+                                     alt="Faculty Profile"
+                                     class="img-responsive"/>
+                            </div>
+                        </div>
+                        <div class="col-8 col-sm-8">
+                            <div class="teacher_text">
+                                <h5><a href="teacher-profile.html">{{
+                                        row['faculty_firstname'] }} {{
+                                        row['faculty_lastname'] }}
+                                    </a></h5>
+                                <h6>{{ row['faculty_qualification'] }}</h6>
+                                <button class="btn btn-default profile_btn"
+                                        type="button"
+                                        onclick='window.location
+                                        .href="/student/load_faculty_profile"'>
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        <div class="p-t-50 text-center">
+            <button class="btn btn-default custom_btn custom_btn_full"
+                    type="button"
+                    onclick='window.location
+                    .href="/student/load_faculty"'>view more
+            </button>
+        </div>
+    </div>
+</section>
+
+
+{% include 'student/footer.html' %}
+
+<a class="btn btn-lg  scrollup"><i class="fa fa-arrow-up"></i></a>
+
+<script src="../../static/studentResources/js/jquery.min.js"></script>
+
+<script src="../../static/studentResources/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"
+        src="../../static/studentResources/js/jquery.countdown.min.js"></script>
+
+<script src="../../static/studentResources/js/owl.carousel.min.js"></script>
+
+<script src="../../static/studentResources/js/jquery.magnific-popup.min.js"></script>
+
+<script src="../../static/studentResources/js/mobilemenu.js"></script>
+<script src="../../static/studentResources/js/custom.js"></script>
+</body>
+</html>

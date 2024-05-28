@@ -1,0 +1,112 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/faculty/load_dashboard">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">Home</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/faculty/view_profile">
+                <i class="mdi mdi-school menu-icon"></i>
+                <span class="menu-title">View Profile</span>
+            </a>
+            {#            <div class="collapse" id="page-layouts">#}
+            {#                <ul class="nav flex-column sub-menu">#}
+            {#                    <li class="nav-item"><a class="nav-link"#}
+            {#                                            href="#">Add Degree</a></li>#}
+            {#                    <li class="nav-item"><a class="nav-link" href="#">View#}
+            {#                        Degree</a></li>#}
+            {#                </ul>#}
+            {#            </div>#}
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic"
+               aria-expanded="false"
+               aria-controls="ui-basic">
+                <i class="mdi mdi-file-tree menu-icon"></i>
+                <span class="menu-title">Manage Assignment</span>
+            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link"
+                                            href="/faculty/load_assignment">Add
+                        Assignment</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="/faculty/view_assignment">View
+                        Assignment</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-advanced"
+               aria-expanded="false"
+               aria-controls="ui-advanced">
+                <i class="mdi mdi-calendar-clock menu-icon"></i>
+                <span class="menu-title">Manage Lecture Schedule</span>
+            </a>
+            <div class="collapse" id="ui-advanced">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link"
+                                            href="/faculty/load_lecture">Add
+                        Lecture Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="/faculty/view_lecture">View
+                        Lecture Schedule</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements"
+               aria-expanded="false"
+               aria-controls="form-elements">
+                <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+                <span class="menu-title">Manage Exam Schedule</span>
+            </a>
+            <div class="collapse" id="form-elements">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link"
+                                            href="/faculty/load_exam">Add
+                        Exam Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="/faculty/view_exam">View
+                        Exam Schedule</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/faculty/view_assignment_grades"
+               aria-expanded="false"
+               aria-controls="editors">
+                <i class="mdi mdi-account-check menu-icon"></i>
+                <span class="menu-title">Manage Assignment Grades</span>
+            </a>
+{#            <div class="collapse" id="editors">#}
+{#                <ul class="nav flex-column sub-menu" href="/faculty/view_assignment_grades">#}
+{#                    <li class="nav-item"><a class="nav-link"#}
+{#                                            href="/faculty/load_grades">Add#}
+{#                        Assignment Grades</a></li>#}
+{#                    <li class="nav-item"><a class="nav-link"#}
+{#                                            href="/faculty/view_grades">View#}
+{#                        Assignment Grades</a></li>#}
+{#                </ul>#}
+{#            </div>#}
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/faculty/view_student">
+                <i class="mdi mdi-account-multiple menu-icon"></i>
+                <span class="menu-title">View Students</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/logout_session">
+                <i class="mdi mdi-logout menu-icon"></i>
+                <span class="menu-title">Logout</span>
+            </a>
+        </li>
+    </ul>
+</nav>

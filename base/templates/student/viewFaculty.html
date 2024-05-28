@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>COLLEGION | Student</title>
+    <link rel="icon" href="../../static/adminResources/image/favicon.ico"
+          type="image/x-icon"/>
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="content-type" content="text/HTML" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description"
+          content=" Study point is a theme which is well organised and easy to understand. The templates layout are easy to modify or customize for your web pages.  Templates are used various purpose such as website, business, corporate, portfolio, etc. Browse for unique HTML/CSS  Themes. Powerful site template design in a clean and minimalistic style. study point theme templates by Crescent Theme exclusive on themeforest.">
+    <meta property="og:description"
+          content="Best education html Theme for educational, training center, education center, university, college, kindergarten, courses hub and academy."/>
+    <meta name="keywords"
+          content="education theme, education, best education, html, html templates, css templates, css, website templates, blogger template, studypoint, study-point, study, study point, school, teaching, Responsive, Landing, Bootstrap, Bootstrap 4,Template, school layout, school template ">
+    <meta property="og:title"
+          content="Study Point - Creative Multi-Purpose Education Theme"/>
+    <meta name="author" content="Crescent-Theme">
+    <meta name="copyright" content="copyright 2019 Crescent Theme">
+
+    <link href="../../static/studentResources/css/bootstrap.min.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/font-awesome.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/custom-font.css"
+          rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+
+    <link href="../../static/studentResources/css/owl.carousel.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/owl.theme.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/navigation.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/preloader.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/style.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/responsive.css"
+          rel="stylesheet"/>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" class="home">
+
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+
+{% include 'student/header.html' %}
+
+<div class="teacher_bg">
+    <div class="header_title">
+        <h1>Our Faculty Members</h1>
+        <hr class="tital_border">
+    </div>
+</div>
+
+<div class="breadcrumb_bg">
+    <div class="container">
+        <ul class="breadcrumb breadcrumb-arrow">
+            <li><a href="/student/load_dashboard">Home</a></li>
+            <li class="active"><span>Faculty</span></li>
+        </ul>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page_tital">
+                    <h2>Dedicated Faculty</h2>
+                    <hr class="tital_border m-l-0">
+                    <p>Expert in Education</p>
+                </div>
+            </div>
+        </div>
+        <div class="row m-t-30">
+            {% for row in faculty_vo_list %}
+                <div class="col-sm-6 m-t-30">
+                    <div class="row m-b-30">
+                        <div class="col-xs-4 col-sm-4 col-4">
+                            <div class="teachers_pro custom_hover_img">
+                                <img class="img-responsive" alt="faculty"
+                                     src="{{ row['faculty_image_path'] }}{{ row['faculty_image_name'] }}">
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-8">
+                            <div class="teacher_text">
+                                <h5><a
+                                        href="/student/load_teacher_profile">{{ row['faculty_firstname'] }} {{ row['faculty_lastname'] }}</a>
+                                </h5>
+                                <h6>{{ row['faculty_qualification'] }}</h6>
+                                <button type="button"
+                                        class="btn btn-default profile_btn"
+                                        onclick='window.location
+                                                .href="/student/load_faculty_profile?facultyId={{ row['faculty_id'] }}"'>
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% include 'student/footer.html' %}
+
+<a class="btn btn-lg  scrollup"><i class="fa fa-arrow-up"></i></a>
+
+<script src="../../static/studentResources/js/jquery.min.js"></script>
+
+<script src="../../static/studentResources/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"
+        src="../../static/studentResources/js/jquery.countdown.min.js"></script>
+
+<script src="../../static/studentResources/js/owl.carousel.min.js"></script>
+
+<script src="../../static/studentResources/js/jquery.magnific-popup.min.js"></script>
+
+<script src="../../static/studentResources/js/mobilemenu.js"></script>
+<script src="../../static/studentResources/js/custom.js"></script>
+</body>
+</html>

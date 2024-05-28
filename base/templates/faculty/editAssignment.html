@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>COLLEGION | Faculty</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/flag-icon.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/feather.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon"
+          href="../../static/adminResources/image/favicon.ico"/>
+    <script>
+        function loadAssignmentSubject() {
+            let assignmentSemesterId = document.getElementById
+            ('assignmentSemesterId');
+            let assignmentSubjectId = document.getElementById
+            ('assignmentSubjectId');
+
+            assignmentSubjectId.innerHTML = "";
+
+            let option = document.createElement("option");
+            option.value = "";
+            option.text = "Select Subject";
+            assignmentSubjectId.options.add(option);
+            assignmentSubjectId[0].disabled = true;
+            assignmentSubjectId[0].selected = true;
+
+            let ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4) {
+                    let json = JSON.parse(ajax.responseText);
+                    for (let i = 0; i < json.length; i++) {
+                        let option = document.createElement("option");
+                        option.value = json[i].subject_id;
+                        option.text = json[i].subject_name;
+                        assignmentSubjectId.options.add(option);
+                    }
+                }
+            };
+            ajax.open("get",
+                "/faculty/ajax_subject_assignment?assignmentSemesterId=" +
+                assignmentSemesterId.value, true);
+            ajax.send();
+        }
+    </script>
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    {% include 'faculty/header.html' %}
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+
+        {% include 'faculty/menu.html' %}
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row grid-margin">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header"
+                                 style="background: linear-gradient(90deg, #464de4, transparent);">
+                                <h4 class="m-0 text-white">Edit Assignment</h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="cmxform" id="commentForm"
+                                      method="post"
+                                      action="/faculty/update_assignment">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="assignmentDegreeId">
+                                                    Degree Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="assignmentDegreeId"
+                                                       id="assignmentDegreeId"
+                                                       value="{{ faculty_vo_list[0][1]['degree_name'] }}"
+                                                       disabled required
+                                                >
+                                            </div>
+
+
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="assignmentDepartmentId">
+                                                    Department Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="assignmentDepartmentId"
+                                                       id="assignmentDepartmentId"
+                                                       value="{{
+                                                               faculty_vo_list[0][2]['department_name'] }}"
+                                                       disabled required
+                                                >
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="assignmentSemesterId">
+                                                    Semester Number</label>
+                                                <select class="form-control"
+                                                        name="assignmentSemesterId"
+                                                        id="assignmentSemesterId" onchange="loadAssignmentSubject()" required>
+                                                    <option value="" selected
+                                                            disabled>Select
+                                                        Semester
+                                                    </option>
+                                                    {% for row in
+                                                    semester_dao_list %}
+                                                        <option
+                                                                value="{{
+                                                                        row['semester_id'] }}">{{ row['semester_number'] }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="assignmentSubjectId">
+                                                    Subject Name</label>
+                                                <select class="form-control"
+                                                        name="assignmentSubjectId"
+                                                        id="assignmentSubjectId" required>
+                                                    <option value="" selected
+                                                            disabled>Select
+                                                        Subject
+                                                    </option>
+                                                </select>
+                                            </div>
+
+{#                                            <div class="form-group col-6">#}
+{#                                                <label#}
+{#                                                        for="assignmentFacultyId">#}
+{#                                                    Faculty Name</label>#}
+{#                                                <select class="form-control"#}
+{#                                                        name="assignmentFacultyId"#}
+{#                                                        id="assignmentFacultyId">#}
+{#                                                    <option value="" selected#}
+{#                                                            disabled>Select#}
+{#                                                        Faculty#}
+{#                                                    </option>#}
+{#                                                </select>#}
+{#                                            </div>#}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label
+                                                    for="assignmentTitle">Assignment
+                                                Title</label>
+                                            <input type="text"
+                                                    id="assignmentTitle"
+                                                    class="form-control"
+                                                    name="assignmentTitle"
+                                                   value="{{
+                                                           assignment_vo_list[0]['assignment_title'] }}" required>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="assignmentStartDate">Assignment
+                                                    Start Date</label>
+                                                <div id="datepicker-popup"
+                                                     class="input-group date datepicker">
+                                                    <input type="date"
+                                                           class="form-control"
+                                                           id="assignmentStartDate"
+                                                           name="assignmentStartDate"
+                                                           value="{{
+                                                                   assignment_vo_list[0]['assignment_startdate'] }}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label
+                                                        for="assignmentEndDate">Assignment
+                                                    End Date</label>
+                                                <div id="datepicker-popup"
+                                                     class="input-group date datepicker">
+                                                    <input type="date"
+                                                           class="form-control"
+                                                           id="assignmentEndDate"
+                                                           name="assignmentEndDate"
+                                                           value="{{
+                                                                   assignment_vo_list[0]['assignment_enddate'] }}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label
+                                                    for="assignmentDescription">Assignment
+                                                Description</label>
+                                            <textarea
+                                                    id="assignmentDescription"
+                                                    class="form-control"
+                                                    name="assignmentDescription" required>{{ assignment_vo_list[0]['assignment_description'] }}</textarea>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-5">
+                                                <label
+                                                        for="assignmentMarks">Assignment
+                                                    Marks</label>
+                                                <input id="assignmentMarks"
+                                                       class="form-control"
+                                                       name="assignmentMarks"
+                                                       maxlength="3"
+                                                       type="text"
+                                                       value="{{
+                                                               assignment_vo_list[0]['assignment_marks'] }}" required>
+                                            </div>
+
+                                            {#                                            <div class="form-group col-5">#}
+                                            {#                                                <label>Upload Image</label>#}
+                                            {#                                                <input type="file"#}
+                                            {#                                                       name="assignmentImage"#}
+                                            {#                                                       class="file-upload-default"#}
+                                            {#                                                       accept="image/*">#}
+                                            {#                                                <div class="input-group col-xs-12">#}
+                                            {#                                                    <input type="text"#}
+                                            {#                                                           class="form-control file-upload-info"#}
+                                            {#                                                           disabled=""#}
+                                            {#                                                           placeholder="Upload Image">#}
+                                            {#                                                    <span class="input-group-append">#}
+                                            {#                                                      <button class="file-upload-browse btn btn-primary"#}
+                                            {#                                                              type="button">Upload</button>#}
+                                            {#                                                    </span>#}
+                                            {#                                                </div>#}
+                                            {#                                            </div>#}
+                                        </div>
+
+                                        <input class="btn btn-primary"
+                                               type="submit"
+                                               value="Update">
+
+                                        <input type="hidden"
+                                               name="assignmentId"
+                                               value="{{
+                                                       assignment_vo_list[0]['assignment_id'] }}">
+
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            {% include 'faculty/footer.html' %}
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<script src="../../static/adminResources/js/jquery.validate.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap-maxlength.min.js"></script>
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+<script src="../../static/adminResources/js/file-upload.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

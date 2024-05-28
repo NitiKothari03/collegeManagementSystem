@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>COLLEGION | Student</title>
+    <link rel="icon" href="../../static/adminResources/image/favicon.ico"
+          type="image/x-icon"/>
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="content-type" content="text/HTML" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description"
+          content=" Study point is a theme which is well organised and easy to understand. The templates layout are easy to modify or customize for your web pages. Templates are used various purpose such as website, business, corporate, portfolio, etc. Browse for unique HTML/CSS  Themes. Powerful site template design in a clean and minimalistic style. study point theme templates by Crescent Theme exclusive on themeforest.">
+    <meta property="og:description"
+          content="Best education html Theme for educational, training center, education center, university, college, kindergarten, courses hub and academy."/>
+    <meta name="keywords"
+          content="education theme, education, best education, html, html templates, css templates, css, website templates, blogger template, studypoint, study-point, study, study point, school, teaching, Responsive, Landing, Bootstrap, Bootstrap 4,Template, school layout, school template ">
+    <meta property="og:title"
+          content="Study Point - Creative Multi-Purpose Education Theme"/>
+    <meta name="author" content="Crescent-Theme">
+    <meta name="copyright" content="copyright 2019 Crescent Theme">
+
+    <link href="../../static/studentResources/css/bootstrap.min.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/font-awesome.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/custom-font.css"
+          rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+
+    <link href="../../static/studentResources/css/skill.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/owl.carousel.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/owl.theme.css"
+          rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/navigation.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/preloader.css"
+          rel="stylesheet"/>
+    <link href="../../static/studentResources/css/style.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/responsive.css"
+          rel="stylesheet"/>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" class="home">
+
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+
+{% include 'student/header.html' %}
+
+{% for row in faculty_vo_list %}
+    <div class="teacher_bg">
+        <div class="header_title">
+            <h1>{{ row[0]['faculty_firstname'] }} {{ row[0]['faculty_lastname'] }}</h1>
+            <hr class="tital_border">
+        </div>
+    </div>
+
+    <div class="breadcrumb_bg">
+        <div class="container">
+            <ul class="breadcrumb breadcrumb-arrow">
+                <li><a href="/student/load_dashboard">Home</a></li>
+                <li><a href="/student/load_faculty">Profile</a></li>
+                <li class="active"><span>Faculty Profile</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="page_tital">
+                        <h2>{{ row[0]['faculty_firstname'] }} {{ row[0]['faculty_lastname'] }}</h2>
+                        <hr class="tital_border m-l-0">
+                    </div>
+                    <div class="teacher_contect">
+                        <i class="fa fa-envelope-o"></i>
+                        <a href="javascript:void(0)"> Email :
+                            {{ row[4]['login_username'] }}
+                        </a><br><br>
+                        <i class="fa fa-dot-circle-o"></i>
+                        <a href="javascript:void(0)"> Subject :
+                            {{ row[3]['subject_name'] }}
+                        </a><br><br>
+                        <i class="fa fa-clipboard"></i>
+                        <a href="javascript:void(0)"> Department :
+                            {{ row[2]['department_name'] }}({{ row[1]['degree_name'] }})
+                        </a><br><br>
+                        <i class="fa fa-certificate"></i>
+                        <a href="javascript:void(0)"> Experience :
+                            {{ row[0]['faculty_teaching_experience'] }}
+                        </a><br><br>
+
+                        <p class="m-t-30">Our College provides the best faculty
+                            with a wide range of experience. They are very
+                            efficient with their work as well as extra
+                            activities like career building. All the faculty
+                            members are willing to guide students’ careers and
+                            futures. As faculty members teach, they disseminate
+                            and impart basic or applied knowledge to students
+                            and assist students with the learning process and
+                            applying the knowledge. </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="profile_img">
+                        <img src="{{ row[0]['faculty_image_path'] }}{{
+                                row[0]['faculty_image_name'] }}"
+                             class="img-responsive" alt="teacher-profile"
+                             style="width: 60%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endfor %}
+{% include 'student/footer.html' %}
+
+<a class="btn btn-lg  scrollup"><i class="fa fa-arrow-up"></i></a>
+
+<script src="../../static/studentResources/js/jquery.min.js"></script>
+
+<script src="../../static/studentResources/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"
+        src="../../static/studentResources/js/jquery.countdown.min.js"></script>
+
+<script src="../../static/studentResources/js/owl.carousel.min.js"></script>
+
+<script src="../../static/studentResources/js/jquery.magnific-popup.min.js"></script>
+
+<script type="text/javascript"
+        src="../../static/studentResources/js/skill.js"></script>
+
+<script src="../../static/studentResources/js/mobilemenu.js"></script>
+<script src="../../static/studentResources/js/custom.js"></script>
+</body>
+</html>

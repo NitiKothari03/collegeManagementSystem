@@ -1,0 +1,48 @@
+First Pass:
+35
+29
+5
+45
+10
+
+Second Pass:
+29
+35
+5
+45
+10
+
+Third Pass:
+29
+5
+35
+45
+10
+
+Fourth Pass:
+29
+5
+35
+10
+45
+
+Fifth Pass:
+5
+29
+35
+10
+45
+
+Sixth Pass:
+5
+29
+10
+35
+45
+
+Seven Pass:
+5
+10
+29
+35
+45

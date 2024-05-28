@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>COLLEGION | Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/flag-icon.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/feather.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon"
+          href="../../static/adminResources/image/favicon.ico"/>
+
+    <script type="text/javascript">
+
+        function loadSubjectDepartment() {
+            let subjectDegreeId = document.getElementById('subjectDegreeId');
+            let subjectDepartmentId = document.getElementById('subjectDepartmentId');
+
+            subjectDepartmentId.innerHTML = "";
+
+            let option = document.createElement("option");
+            option.value = "";
+            option.text = "Select Department";
+            subjectDepartmentId.options.add(option);
+            subjectDepartmentId[0].disabled = true;
+            subjectDepartmentId[0].selected = true;
+
+            let ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4) {
+                    let json = JSON.parse(ajax.responseText);
+
+                    for (let i = 0; i < json.length; i++) {
+
+                        let option = document.createElement("option");
+                        option.value = json[i].department_id;
+                        option.text = json[i].department_name;
+                        subjectDepartmentId.options.add(option);
+                    }
+                }
+            };
+            ajax.open("get",
+                "/admin/ajax_department_subject?subjectDegreeId=" +
+                subjectDegreeId.value, true);
+            ajax.send();
+        }
+
+        function loadSubjectSemester() {
+            let subjectDepartmentId = document.getElementById
+            ('subjectDepartmentId');
+            let subjectSemesterId = document.getElementById
+            ('subjectSemesterId');
+
+            subjectSemesterId.innerHTML = "";
+
+            let option = document.createElement("option");
+            option.value = "";
+            option.text = "Select Semester";
+            subjectSemesterId.options.add(option);
+            subjectSemesterId[0].disabled = true;
+            subjectSemesterId[0].selected = true;
+
+            let ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4) {
+                    let json = JSON.parse(ajax.responseText);
+
+                    for (let i = 0; i < json.length; i++) {
+
+                        let option = document.createElement("option");
+                        option.value = json[i].semester_id;
+                        option.text = json[i].semester_number;
+                        subjectSemesterId.options.add(option);
+                    }
+                }
+            };
+            ajax.open("get",
+                "/admin/ajax_semester_subject?subjectDepartmentId=" +
+                subjectDepartmentId.value, true);
+            ajax.send();
+        }
+
+    </script>
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    {% include 'admin/header.html' %}
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+
+        {% include 'admin/menu.html' %}
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row grid-margin">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header"
+                                 style="background: linear-gradient(90deg, #464de4, transparent);">
+                                <h4 class="m-0 text-white">Add Subject</h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="cmxform" id="commentForm"
+                                      method="post"
+                                      action="/admin/insert_subject">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="subjectDegreeId">Subject
+                                                    Degree Name</label>
+                                                <select class="form-control"
+                                                        name="subjectDegreeId"
+                                                        id="subjectDegreeId"
+                                                        onchange="loadSubjectDepartment()" required>
+                                                    <option value="" selected
+                                                            disabled>Select
+                                                        Degree
+                                                    </option>
+                                                    {% for row in degree_vo_list %}
+                                                        <option value="{{
+                                                                row['degree_id'] }}">
+                                                            {{
+                                                                    row['degree_name'] }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="subjectDepartmentId">Subject
+                                                    Department Name</label>
+                                                <select class="form-control"
+                                                        name="subjectDepartmentId"
+                                                        id="subjectDepartmentId"
+                                                        onchange="loadSubjectSemester()" required>
+                                                    <option value="" selected
+                                                            disabled>Select
+                                                        Department
+                                                    </option>
+                                                    {#                                                    {% for row in department_vo_list %}#}
+                                                    {#                                                        <option value="{{#}
+                                                    {#                                                                row[0]['department_id'] }}">#}
+                                                    {#                                                        {{#}
+                                                    {#                                                                row[0]['department_name'] }}#}
+                                                    {#                                                        </option>#}
+                                                    {#                                                    {% endfor %}#}
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group col-4">
+                                                <label
+                                                        for="subjectSemesterId">Subject
+                                                    Semester Number</label>
+                                                <select class="form-control"
+                                                        name="subjectSemesterId"
+                                                        id="subjectSemesterId" required>
+                                                    <option value="" selected
+                                                            disabled>Select
+                                                        Semester
+                                                    </option>
+                                                    {#                                                    {% for row in semester_vo_list %}#}
+                                                    {#                                                        <option value="{{#}
+                                                    {#                                                                row[2]['semester_id'] }}">#}
+                                                    {#                                                        {{#}
+                                                    {#                                                                row[2]['semester_number'] }}#}
+                                                    {#                                                        </option>#}
+                                                    {#                                                    {% endfor %}#}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="subjectName">Subject
+                                                Name</label>
+                                            <input id="subjectName"
+                                                   class="form-control"
+                                                   name="subjectName"
+                                                   minlength="2"
+                                                   type="text" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="subjectCode">Subject
+                                                Code</label>
+                                            <input id="subjectCode"
+                                                   class="form-control"
+                                                   name="subjectCode"
+                                                   minlength="2"
+                                                   type="text" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label
+                                                    for="subjectTextbook">Subject
+                                                Textbook</label>
+                                            <input id="subjectTextbook"
+                                                   class="form-control"
+                                                   name="subjectTextbook"
+                                                   minlength="2"
+                                                   type="text" required>
+                                        </div>
+
+                                        <input class="btn btn-primary"
+                                               type="submit" value="Add">
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            {% include 'admin/footer.html' %}
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<script src="../../static/adminResources/js/jquery.validate.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap-maxlength.min.js"></script>
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/form-validation.js"></script>
+<script src="../../static/adminResources/js/bt-maxLength.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

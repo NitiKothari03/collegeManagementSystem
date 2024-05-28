@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>COLLEGION | Student</title>
+    <link rel="icon" href="../../static/adminResources/image/favicon.ico"
+          type="image/x-icon"/>
+
+
+    <!--[if lt IE 9]>
+   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+   <![endif]-->
+    <meta http-equiv="content-language" content="en-us">
+    <meta http-equiv="content-type" content="text/HTML" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description"
+          content=" Study point is a theme which is well organised and easy to understand. The templates layout are easy to modify or customize for your web pages.  Templates are used various purpose such as website, business, corporate, portfolio, etc. Browse for unique HTML/CSS  Themes. Powerful site template design in a clean and minimalistic style. study point theme templates by Crescent Theme exclusive on themeforest.">
+    <meta property="og:description"
+          content="Best education html Theme for educational, training center, education center, university, college, kindergarten, courses hub and academy."/>
+    <meta name="keywords"
+          content="education theme, education, best education, html, html templates, css templates, css, website templates, blogger template, studypoint, study-point, study, study point, school, teaching, Responsive, Landing, Bootstrap, Bootstrap 4,Template, school layout, school template ">
+    <meta property="og:title"
+          content="Study Point - Creative Multi-Purpose Education Theme"/>
+    <meta name="author" content="Crescent-Theme">
+    <meta name="copyright" content="copyright 2019 Crescent Theme">
+
+    <link href="../../static/studentResources/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/custom-font.css" rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+          rel="stylesheet">
+
+    <link href="../../static/studentResources/css/owl.carousel.css" rel="stylesheet"/>
+    <link href="../../static/studentResources/css/owl.theme.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/navigation.css" rel="stylesheet"/>
+    <link href="../../static/studentResources/css/preloader.css" rel="stylesheet"/>
+    <link href="../../static/studentResources/css/style.css" rel="stylesheet"/>
+
+    <link href="../../static/studentResources/css/responsive.css" rel="stylesheet"/>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" class="home">
+
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+
+{% include 'student/header.html' %}
+
+<div class="teacher_bg">
+    <div class="header_title">
+        <h1>Assignments</h1>
+        <hr class="tital_border">
+    </div>
+</div>
+
+<div class="breadcrumb_bg">
+    <div class="container">
+        <ul class="breadcrumb breadcrumb-arrow">
+            <li><a href="/student/load_dashboard">Home</a></li>
+            <li><a href="/student/view_assignment">Assignments</a></li>
+            <li class="active"><span>Upload Assignments</span></li>
+        </ul>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            {% for row in assignment_vo_list %}
+            <div class="col-sm-12">
+                <div class="page_tital">
+                    <h2>{{ row[0]['assignment_title'] }}</h2>
+                    <hr class="tital_border m-lg-auto">
+                </div>
+            </div>
+        </div>
+        <div class="row m-t-30">
+{#                <div class="col-sm-6">#}
+{#                    <div class="row m-xl-5">#}
+{#                        <div class="col-xs-4 col-sm-4 col-4">#}
+{#                            <div class="teachers_pro custom_hover_img">#}
+{#                                <img class="img-responsive" alt="faculty"#}
+{#                                     src="{{ row[0]['faculty_image_path']#}
+{#                                             }}{{#}
+{#                                             row[0]['faculty_image_name'] }}">#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col-xl-12">#}
+{#                            <form action="/student/insert_assignment"#}
+{#                                  method="post">#}
+                            <div class="teacher_text">
+                                <form action="/student/insert_assignment?assignmentId={{ row[0]['assignment_id'] }}" method="post"
+                                       enctype=multipart/form-data>
+                                    <h6>Subject : {{ row[2]['subject_name']
+                                            }}</h6><br>
+                                    <h5>Assignment Description : {{
+                                            row[0]['assignment_description']
+                                            }}</h5><br><br>
+                                    <a href="{{
+                                                 row[0]['assignment_image_path']
+                                                 }}{{
+                                                 row[0]['assignment_image_name'] }}"> View file
+                                    </a><br><br>
+                                    <div class="ml-0">
+                                        <h5>Start Date : <font
+                                                color="#f23663">{{
+                                                row[0]['assignment_startdate']
+                                                }}</h5></font><br>
+                                        <h5>Due Date : <font
+                                                color="#f23663"> {{
+                                                row[0]['assignment_enddate']
+                                                }}</h5></font>
+                                    </div>
+
+                                    <input type="file"
+                                           name="assignmentFile"
+                                           class="btn btn-default
+                                            profile_btn" accept="application/pdf">
+                                    <br><br>
+
+                                    <button type="submit"
+                                            class="btn btn-default profile_btn"
+                                            style="justify-content: right;
+                                            align-items: right" value="Upload
+                                            Assignment">Upload Assignment</button>
+                                </form>
+                            </div>
+{#                            </form>#}
+                        </div>
+                    </div>
+{#                </div>#}
+            {% endfor %}
+{#        </div>#}
+{#    </div>#}
+</section>
+
+{% include 'student/footer.html' %}
+
+<div class="login_signup_option">
+    <div class="l-modal is-hidden--off-flow js-modal-shopify">
+        <div class="l-modal__shadow js-modal-hide"></div>
+        <div class="login_popup login_modal_body">
+            <div class="Popup_title d-flex justify-content-between">
+                <h2 class="hidden">&nbsp;</h2>
+
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-md-12 col-lg-12 login_option_btn">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item"><a class="nav-link active"
+                                                    data-toggle="tab"
+                                                    href="#login" role="tab">Login</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    data-toggle="tab"
+                                                    href="#panel2" role="tab">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+
+                        <div class="tab-content card">
+
+                            <div class="tab-pane fade in show active"
+                                 id="login" role="tabpanel">
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Email</label>
+                                                <input type="email"
+                                                       class="form-control"
+                                                       placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Password</label>
+                                                <input type="password"
+                                                       class="form-control"
+                                                       placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
+                                            <a href="javascript:void(0)"
+                                               title="" class="forget_pass">Forget
+                                                Password ?</a>
+                                            <button type="submit"
+                                                    class="btn btn-default login_btn">
+                                                Login
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="social_login">
+                                                <div class="social_items">
+                                                    <button class="google_login google">
+                                                        Login Google
+                                                    </button>
+                                                    <button class="google_login facebook">
+                                                        Login Facebook
+                                                    </button>
+                                                    <button class="google_login twitter">
+                                                        Login Twitter
+                                                    </button>
+                                                    <button class="google_login linkdin">
+                                                        Login Linkdin
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <div class="tab-pane fade" id="panel2"
+                                 role="tabpanel">
+                                <form action="#" class="register">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Name</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Email</label>
+                                                <input type="email"
+                                                       class="form-control"
+                                                       placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label class="control-label">Password</label>
+                                                <input type="password"
+                                                       class="form-control"
+                                                       placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12 col-md-12 col-lg-12 d-flex justify-content-between login_option">
+                                            <button type="submit"
+                                                    class="btn btn-default login_btn">
+                                                Register
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a class="btn btn-lg  scrollup"><i class="fa fa-arrow-up"></i></a>
+
+<script src="../../static/studentResources/js/jquery.min.js"></script>
+
+<script src="../../static/studentResources/js/bootstrap.min.js"></script>
+
+<script type="text/javascript"
+        src="../../static/studentResources/js/jquery.countdown.min.js"></script>
+
+<script src="../../static/studentResources/js/owl.carousel.min.js"></script>
+
+<script src="../../static/studentResources/js/jquery.magnific-popup.min.js"></script>
+
+<script src="../../static/studentResources/js/mobilemenu.js"></script>
+<script src="../../static/studentResources/js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>COLLEGION | Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/flag-icon.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/feather.css">
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <link rel="stylesheet"
+          href="../../static/adminResources/css/dataTables.bootstrap4.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon"
+          href="../../static/adminResources/image/favicon.ico"/>
+    <link rel="stylesheet" href="../../static/adminResources/css/modal.css">
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    {% include 'admin/header.html' %}
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+
+        {% include 'admin/menu.html' %}
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-header"
+                         style="background: linear-gradient(90deg, #464de4, transparent);">
+                        <h4 class="m-0 text-white">View Student</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="order-listing" class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Profile Pic</th>
+                                            <th>Degree</th>
+                                            <th>Department</th>
+                                            <th>Semester</th>
+                                            <th>Username</th>
+                                            <th>Enrollment no</th>
+                                            <th>Name</th>
+                                            <th>Gender</th>
+                                            <th>DOB</th>
+                                            <th>Contact no</th>
+                                            <th>Parent Contact no</th>
+                                            <th>Qualification</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in student_vo_list %}
+                                            <tr>
+                                                <td>
+                                                    <img id="myImg" src="
+                                                            {{ row[4]['student_image_path'] }}{{ row[4]['student_image_name'] }}"
+                                                         style="width:30px;height:30px"
+                                                         onclick="fn(this)">
+                                                </td>
+                                                <td>{{ row[0]['degree_name'] }}</td>
+                                                <td>{{ row[1]['department_name'] }}</td>
+                                                <td>{{ row[2]['semester_number'] }}</td>
+                                                <td>{{ row[3]['login_username'] }}</td>
+                                                <td>{{ row[4]['student_enrollment'] }}</td>
+                                                <td>{{ row[4]['student_firstname'] }} {{ row[4]['student_lastname'] }}</td>
+                                                <td>{{ row[4]['student_gender'] }}</td>
+                                                <td>{{ row[4]['student_dob'] }}</td>
+                                                <td>{{ row[4]['student_contact'] }}</td>
+                                                <td>{{ row[4]['student_parent_contact'] }}</td>
+                                                <td>{{ row[4]['student_qualification'] }}</td>
+                                                <td>{{ row[4]['student_status'] }}</td>
+{#                                                <td><a href="#}
+{##}
+{#                                                        {{ row[4]['student_image_path'] }}{{ row[4]['student_image_name'] }}"#}
+{#                                                       target="_blank">View</a>#}
+{#                                                </td>#}
+                                                <td>
+                                                    <a
+                                                            href="/admin/edit_student?studentId={{ row[4]['student_id'] }}">
+                                                        <i class="mdi mdi-pencil-box-outline lead"></i>
+                                                    </a>
+                                                    <a
+                                                            href="/admin/delete_student?studentId={{ row[4]['student_id'] }}&loginId={{ row[3]['login_id'] }}">
+                                                        <i class="mdi mdi-delete text-danger lead ml-2"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% with message = get_flashed_messages() %}
+
+                                            {% if message %}
+                                                <center>
+                                                <div style="border:1px transparent;
+                                                color: green; font-size: 20px;
+                                                background-color: #f1f3f3"
+                                                     ><font style="font-family:  Arial, Helvetica, sans-serif">{{
+                                                        message[0]
+                                                        }}</font></div><br></center>
+
+                                            {% endif %}
+
+                                        {% endwith %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            {% include 'admin/footer.html' %}
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="fn1()">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
+<!-- plugins:js -->
+<script src="../../static/adminResources/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="../../static/adminResources/js/off-canvas.js"></script>
+<script src="../../static/adminResources/js/hoverable-collapse.js"></script>
+<script src="../../static/adminResources/js/template.js"></script>
+<script src="../../static/adminResources/js/settings.js"></script>
+<script src="../../static/adminResources/js/todolist.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="../../static/adminResources/js/jquery.dataTables.js"></script>
+<script src="../../static/adminResources/js/dataTables.bootstrap4.js"></script>
+<!-- End plugin js for this page -->
+<!-- Custom js for this page-->
+<script src="../../static/adminResources/js/data-table.js"></script>
+<!-- End custom js for this page-->
+<script>
+
+    let span = document.getElementsByClassName("close");
+    let modal = document.getElementById("myModal");
+
+    function fn(x) {
+        let img = document.getElementById("myImg");
+        let modalImg = document.getElementById("img01");
+        let captionText = document.getElementById("caption");
+
+        modal.style.display = "block";
+        modalImg.src = x.src;
+        captionText.innerHTML = x.alt;
+    }
+
+    function fn1() {
+        modal.style.display = "none";
+    }
+
+</script>
+</body>
+
+</html>
